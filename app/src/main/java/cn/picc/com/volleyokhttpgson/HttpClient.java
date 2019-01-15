@@ -44,12 +44,12 @@ public class HttpClient extends VolleyClient {
     private static final int LONGER_SOCKET_TIMEOUT_MS = 100000;
 
 
-    private static final String mDebugApiHost = "http://mtest.picclife.cn/ucsp/";
-    private static final String mReleaseApiHost = "http://m.picclife.cn/ucsp/";
+    private static final String mDebugApiHost = "";
+    private static final String mReleaseApiHost = "";
 
 
-    public static final String API_USER_GET_PROVINCE_CITY = "/api/user/get-province-city";
-    public static final String API_CLAIM_QUERY_CLAIM_PAGE = "/api/claim/query-claim-page";
+    public static final String API_USER_GET_PROVINCE_CITY = "";
+    public static final String API_CLAIM_QUERY_CLAIM_PAGE = "";
 
 
 
@@ -93,16 +93,16 @@ public class HttpClient extends VolleyClient {
 
     public Map<String, String> generateHeader(RequestBody requestBody) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("platform", "8");
+        map.put("", "0");
 //        map.put("openid", "123456");
-        map.put("openid", DeviceUtil.getUUID(VolleyApplication.getContext()));
+        map.put("", DeviceUtil.getUUID(VolleyApplication.getContext()));
 //        map.put("openid", DeviceUtil.getImei(context));
-        map.put("sid-in-header", "1");
+        map.put("", "1");
 
 
-        String token = "7ac623a2-136a-41d2-8333-95ad796fb62f";
+        String token = "";
         if (!"".equals(token)) {
-            map.put("picc-m-sid", token);
+            map.put("", token);
         }
 
 
@@ -115,14 +115,10 @@ public class HttpClient extends VolleyClient {
             e.printStackTrace();
         }
         String data = buffer.snapshot().utf8();
-        map.put("secret", secretSignMD5(data));
+        map.put("secret", "");
         return map;
     }
 
-    private String secretSignMD5(String data) {
-        String s = data + "123456";
-        return Md5Utils.md5hash(s);
-    }
 
 
     public <T> Request<?> addModelRequest(Context context, int method, String url,

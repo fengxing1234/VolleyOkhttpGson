@@ -7,6 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 
 import java.io.IOException;
+import java.util.Map;
 
 import cn.picc.com.volley.utils.LogUtils;
 import okhttp3.RequestBody;
@@ -39,6 +40,11 @@ public abstract class OkRequest<T> extends Request<T> {
             e.printStackTrace();
         }
         return buffer.readUtf8();
+    }
+
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        return super.getHeaders();
     }
 
     protected boolean isRequestBodyNoNeed() {

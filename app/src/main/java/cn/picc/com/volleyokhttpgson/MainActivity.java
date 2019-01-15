@@ -68,4 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        client.cancelAll(this);
+    }
 }
